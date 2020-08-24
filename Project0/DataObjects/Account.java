@@ -20,7 +20,7 @@ public class Account {
 	public Account(int id, int balance, String filePath) {
 		this.id = id;
 		this.balance = balance;
-		tr = new TransactionReader("bin/accounts/" + filePath + ".txt");
+		tr = new TransactionReader("src/accounts/" + filePath + ".txt");
 	}
 	
 	// Print balance to the screen

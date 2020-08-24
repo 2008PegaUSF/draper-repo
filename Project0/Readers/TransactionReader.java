@@ -9,12 +9,12 @@ import DataObjects.Transaction;
 public class TransactionReader {
 	
 	// Members
-	File filePath;
-	ArrayList<Transaction> tList;
+	private File filePath;
+	private ArrayList<Transaction> tList;
 
 	// No Arg Constructor
 	public TransactionReader() {
-		this("bin/accounts/TransactionTest.txt");
+		this("src/accounts/TransactionTest.txt");
 	}
 	
 	// Arg Constructor
@@ -46,8 +46,8 @@ public class TransactionReader {
 		try {
 			FileWriter fw = new FileWriter(filePath);
 			
-			for(int i = 0; i < tList.size(); i++) {
-				fw.write(tList.get(i).readToLine() + '\n');
+			for(Transaction t : tList) {
+				fw.write(t.readToLine() + '\n');
 			}
 			
 			fw.close();
@@ -78,4 +78,8 @@ public class TransactionReader {
 		return balance;
 	}
 	
+	// return all transactions
+	public ArrayList<Transaction> getAll(){
+		return tList;
+	}
 }

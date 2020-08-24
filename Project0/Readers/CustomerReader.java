@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import DataObjects.Account;
 import Users.Customer;
 
 public class CustomerReader {
@@ -14,7 +15,7 @@ public class CustomerReader {
 	
 	// No Arg Constructor
 	public CustomerReader() {
-		this("bin/customers/CustomerList.txt");
+		this("src/customers/CustomerList.txt");
 	}
 	
 	// Arg Constructor
@@ -61,5 +62,26 @@ public class CustomerReader {
 	// Add a customer
 	public void add(Customer e) {
 		cList.add(e);
+	}
+	
+	// Get an account from an ID
+	public Customer getByID(int id) {
+		for(Customer c : cList) {
+			if (c.getID() == id) {
+				return c;
+			}
+		}
+		
+		System.out.println("No Account with ID " + id + " found.");
+		return null;
+	}
+	
+	public static void main(String[] args) {
+		CustomerReader cr = new CustomerReader();
+		Customer c = cr.getByID(1000);
+		Account a = c.getAccount(1111);
+		c.deposit(a,13345);
+		
+		c.post();
 	}
 }

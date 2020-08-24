@@ -83,7 +83,7 @@ public class Customer extends User {
 	// Request a new account
 	public void request() {
 		try {
-			FileWriter fw = new FileWriter("bin/requests/AccountRequests.txt");
+			FileWriter fw = new FileWriter("src/requests/AccountRequests.txt");
 				
 			fw.append(id + "");
 				
@@ -96,7 +96,7 @@ public class Customer extends User {
 	// Request a new account
 	public void requestAccess(int account) {
 		try {
-			FileWriter fw = new FileWriter("bin/requests/AccessRequests.txt");
+			FileWriter fw = new FileWriter("src/requests/AccessRequests.txt");
 					
 			fw.append(id + " " + account);
 					
@@ -143,8 +143,6 @@ public class Customer extends User {
 	}
 	
 	public static void main(String[] args) {
-		Customer c = Customer.readFromLine("1000 Dave Draper 1111 2222 3333");
-		
-		c.request();
+
 	}
 }

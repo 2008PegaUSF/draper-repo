@@ -9,12 +9,12 @@ import DataObjects.Account;
 public class AccountReader {
 
 	// Members
-	File filePath;
-	ArrayList<Account> aList;
+	private File filePath;
+	private ArrayList<Account> aList;
 	
 	// No Arg Constructor
 	public AccountReader() {
-		this("bin/accounts/AccountList.txt");
+		this("src/accounts/AccountList.txt");
 	}
 	
 	// Arg Constructor
@@ -47,8 +47,9 @@ public class AccountReader {
 		try {
 			FileWriter fw = new FileWriter(filePath);
 			
-			for(int i = 0; i < aList.size(); i++) {
-				fw.write(aList.get(i).readToLine() + '\n');
+			for(Account a : aList) {
+				fw.write(a.readToLine() + '\n');
+				a.post();
 			}
 			
 			fw.close();
@@ -73,5 +74,10 @@ public class AccountReader {
 		
 		System.out.println("No Account with ID " + id + " found.");
 		return null;
+	}
+	
+	// Get all accounts
+	public ArrayList<Account> getAll(){
+		return aList;
 	}
 }
