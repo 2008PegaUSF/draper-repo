@@ -3,8 +3,6 @@
  * Multi
  * Line
  * Comment
- * Baby
- * 
  */
 
 create table bear(
