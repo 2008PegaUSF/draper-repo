@@ -28,3 +28,7 @@
 4. accountid - a foreign key linking to the account that holds the transaction
 
 ### Login Fields/Columns
+1. username - a varchar primary key
+2. password
+3. usertype - Admin or Customer
+4 customerid - a foreign key linking to the customer being logged into (if a Customer type entry)
