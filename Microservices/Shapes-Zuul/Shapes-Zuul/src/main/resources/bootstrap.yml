@@ -1,0 +1,38 @@
+
+#Zuul Configuration 
+
+server:
+  port: 8100
+  
+spring:
+  application:
+    name: Shapes-Zuul
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8000/eureka
+      
+#Nothing Specific to Zuul yet. 
+#Ribbon is built into Zuul
+zuul:
+  routes:
+    icecream:
+      path: /api/getShapes
+      service-id: shapes-two
+      strip-prefix: false
+    cheesecake:
+      path: /**
+      service-id: shapes-one
+      strip-prefix: true
+    brownies:
+      path: /shapes/*
+      service-id: shapes-four
+      strip-prefix: false
+      
+ # /* will map to /apples, /kiwi , /stuff but it won't map to something like /stuff/more/stuff
+ # /** will map to /a/b/c/d/the/entire/alphabet 
